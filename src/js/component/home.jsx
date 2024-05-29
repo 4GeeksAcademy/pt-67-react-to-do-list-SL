@@ -5,37 +5,37 @@ import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
-	const [tareas, setTareas] = useState(["Wash my hands", "Make homework"])
-	const [nuevaTarea, setNuevaTarea] = useState("")
+	const [tareas, setTasks] = useState(["Wash my hands", "Make homework"])
+	const [newTask, setNewTask] = useState("")
 	
 	
 	const handleTareaNueva = (event) => {
-		setNuevaTarea(event.target.value)
+		setNewTask(event.target.value)
 	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		setTareas([...tareas,nuevaTarea])
-		setNuevaTarea("")
+		setTasks([...tareas,newTask])
+		setNewTask("")
 	}
 
-	const handleDelete = (posicionAEliminar) => {
+	const handleDelete = (positionToDelete) => {
 		const newArr = []
 		for (let i = 0; i < tareas.length; i++) {
-			if (i !== posicionAEliminar) {
+			if (i !== positionToDelete) {
 				newArr.push(tareas[i])
 			}
 		}
-		setTareas(newArr)
+		setTasks(newArr)
 	}
 
 	return (
 	
 		<div className="w-50 m-auto mt-5">
 			<form onSubmit={handleSubmit}> 
-				<div className="mb-3">
+				<div className="mb-3 fs-4">
 					<label htmlhtmlFor="exampleInputEmail1" className="form-label">Add your task here:</label>
-					<input onChange={handleTareaNueva} type="text" className="form-control" id="newTask" value={nuevaTarea} aria-describedby="taskHelp"/>
+					<input onChange={handleTareaNueva} type="text" className="form-control" id="newTask" value={newTask} aria-describedby="taskHelp"/>
 					<div id="taskHelp" className="form-text">You'll never forguet a task again.</div>
 				</div>
 				<button type="submit" className="btn btn-primary">Submit</button>
@@ -45,8 +45,8 @@ const Home = () => {
 			<ul className="w-50 m-auto">
 				{/* Utilizamos el método map para generar dinámicamente los elementos <li> */}
 				{tareas.map((item, index) => (
-				<li key={index}>{item}
-					<button onClick={()=>handleDelete(index)} type="button" className="btn btn-danger w-1">X</button>
+				<li className="fs-4" key={index}>{item}
+					<button onClick={()=>handleDelete(index)} type="button" className="btn btn-danger btn-sm">X</button>
 				</li>
 				))}
 			</ul>
