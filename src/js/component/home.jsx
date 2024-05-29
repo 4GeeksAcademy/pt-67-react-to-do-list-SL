@@ -50,7 +50,7 @@ const Home = () => {
 				</li>
 				))}
 			</ul>
-			{tareas.length === 0 ? <span>No task, add a task</span> : <span>Total {tareas.length}</span>}
+			{tareas.length === 0 ? <span>No task, add a task</span> : <span>{tareas.length} tasks left</span>}
 		</div>
 		
 
